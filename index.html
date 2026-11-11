@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ClaimLens — Check a claim before you act on it</title>
+<meta name="description" content="ClaimLens breaks any claim or piece of advice into checkable parts, scores each one on transparent evidence signals, and builds a decision brief you can act on.">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="masthead">
+  <div class="brand"><span class="lens" aria-hidden="true">◉</span> ClaimLens</div>
+  <p class="tagline">Check a claim before you act on it.</p>
+  <nav class="mastnav" aria-label="Sections">
+    <a href="#analyser">Analyser</a><a href="#constellation">Evidence map</a><a href="#brief">Decision brief</a><a href="#method">Method</a>
+  </nav>
+</header>
+
+<main>
+  <section class="hero" id="analyser">
+    <h1>Advice is cheap.<br><em>Evidence is the price.</em></h1>
+    <p class="lede">Paste any claim, piece of advice, or AI answer. ClaimLens splits it into checkable parts, scores every part on evidence signals you can inspect, and tells you what would change its mind.</p>
+    <div class="sample-row" role="group" aria-label="Try a sample claim">
+      <span>Try one:</span>
+      <button type="button" class="chip" data-sample="0">Miracle cure claim</button>
+      <button type="button" class="chip" data-sample="1">Investment tip</button>
+      <button type="button" class="chip" data-sample="2">Careful research claim</button>
+    </div>
+    <label class="input-label" for="claim-input">Your claim or advice</label>
+    <textarea id="claim-input" rows="5" placeholder="e.g. Drinking hot water with lemon every morning guarantees weight loss and detoxes your liver, according to many experts."></textarea>
+    <div class="actions">
+      <button type="button" id="analyse-btn" class="btn-primary">Analyse the claim</button>
+      <button type="button" id="clear-btn" class="btn-ghost">Clear</button>
+    </div>
+    <p class="hint" id="input-hint" role="status"></p>
+  </section>
+
+  <section id="results" class="results" hidden aria-live="polite">
+    <div class="verdict-card">
+      <div class="score-ring" id="score-ring"><span id="score-num">–</span><small>/ 100</small></div>
+      <div>
+        <h2 id="verdict-label">Verdict</h2>
+        <p id="verdict-text"></p>
+        <p class="verdict-note">Score = transparent rubric, not a model. Every point is explained below — no black box.</p>
+      </div>
+    </div>
+
+    <h3 id="constellation">Evidence map — each claim as a point in 3D</h3>
+    <p class="section-note">Height = confidence score. Taller, brighter points are better-evidenced. Select a point (or a row below) to inspect it. Drag to tilt the map.</p>
+    <div class="scene" id="scene">
+      <div class="plane" id="plane"></div>
+    </div>
+
+    <h3>Claim by claim</h3>
+    <ol class="claim-list" id="claim-list"></ol>
+
+    <h3 id="brief">Decision brief</h3>
+    <div class="brief-box" id="brief-box"></div>
+    <div class="actions">
+      <button type="button" id="export-btn" class="btn-primary">Download brief (.md)</button>
+      <button type="button" id="copy-btn" class="btn-ghost">Copy brief</button>
+    </div>
+  </section>
+
+  <section class="history">
+    <h3>Past analyses <span class="count" id="history-count"></span></h3>
+    <ul id="history-list" class="history-list"></ul>
+    <button type="button" id="history-clear" class="btn-ghost">Clear history</button>
+  </section>
+
+  <section id="method" class="method">
+    <h2>How the score is built — nothing hidden</h2>
+    <table>
+      <thead><tr><th>Signal</th><th>Points</th><th>Why it counts</th></tr></thead>
+      <tbody>
+        <tr><td>Specific number or statistic</td><td>+15</td><td>Checkable quantities can be verified or falsified.</td></tr>
+        <tr><td>Date or year given</td><td>+10</td><td>Anchors the claim in time; stale claims can be caught.</td></tr>
+        <tr><td>Named source / citation</td><td>+10</td><td>“According to X” gives you somewhere to check.</td></tr>
+        <tr><td>Calibrated hedging (“may”, “likely”, “suggests”)</td><td>+10</td><td>Honest uncertainty is a sign the speaker knows the limits.</td></tr>
+        <tr><td>Absolute words (“always”, “never”, “proves”, “guaranteed”)</td><td>−15</td><td>Reality rarely deals in absolutes; overclaiming is a red flag.</td></tr>
+        <tr><td>Weasel attribution (“experts say”, “studies show”)</td><td>−10</td><td>Authority with no name cannot be checked.</td></tr>
+        <tr><td>Hype words (“miracle”, “revolutionary”, “best ever”)</td><td>−10</td><td>Marketing language crowds out evidence.</td></tr>
+        <tr><td>Too short to check (&lt; 6 words)</td><td>−5</td><td>A bare assertion carries no evidence at all.</td></tr>
+      </tbody>
+    </table>
+    <p class="method-note">Base score 50, clamped 0–100. Verdicts: ≥ 70 Solid · 40–69 Shaky · &lt; 40 Unverifiable. ClaimLens is a <strong>screening tool</strong>, not a fact-checker: it measures how checkable and how overclaimed a statement is. It makes no web requests and calls no model — everything runs in your browser, and nothing you paste leaves your device.</p>
+  </section>
+</main>
+
+<footer>
+  <p>ClaimLens — built for the Apart Research AI × Epistemics Research Sprint, 13–15 Nov 2026 · Track 3: Epistemic Products. By M S Abhishek.</p>
+  <p><a href="https://apartresearch.com/sprints/ai-x-epistemics-research-sprint-2026-11-13-to-2026-11-15">Sprint page</a> · <a href="#method">Method</a></p>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>
