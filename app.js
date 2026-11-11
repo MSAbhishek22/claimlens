@@ -22,10 +22,11 @@ const SIGNAL_LABELS = {
   absolute: ['−15 · Absolute / overclaiming language', 'neg'],
   weasel: ['−10 · Weasel attribution (unnamed authority)', 'neg'],
   hype: ['−10 · Hype / marketing language', 'neg'],
-  short: ['−5 · Too short to check', 'neg']
+  short: ['−5 · Too short to check', 'neg'],
+  unsourced: ['−10 · Number/statistic with no source or date to check', 'neg']
 };
 
-const SIGNAL_POINTS = { number: 15, year: 10, citation: 10, hedge: 10, absolute: -15, weasel: -10, hype: -10, short: -5 };
+const SIGNAL_POINTS = { number: 15, year: 10, citation: 10, hedge: 10, absolute: -15, weasel: -10, hype: -10, short: -5, unsourced: -10 };
 
 function splitClaims(text) {
   return String(text || '')
@@ -44,6 +45,12 @@ function scoreClaim(text) {
       signals.push(key);
       score += SIGNAL_POINTS[key];
     }
+  }
+  // A precise figure with nowhere to check it is a claim, not evidence:
+  // a number earns its +15 only when a source or a date anchors it.
+  if (signals.includes('number') && !signals.includes('citation') && !signals.includes('year')) {
+    signals.push('unsourced');
+    score += SIGNAL_POINTS.unsourced;
   }
   if (text.split(/\s+/).length < 6) { signals.push('short'); score += SIGNAL_POINTS.short; }
   score = Math.max(0, Math.min(100, score));
@@ -94,8 +101,13 @@ const SAMPLES = [
   'You should probably diversify your investments because markets fluctuate.'
 ];
 
+// Viral-claim demo: a made-up viral post (EXAMPLE — not a real quote).
+// One post, three claims the rubric tells apart: one Solid (85), one
+// Unverifiable (25), one Shaky (45). Overall 52/100 — Shaky.
+const VIRAL_CLAIM = 'BREAKING: A 2024 survey of 50,000 households found that families who switched to solar saved 38% on electricity bills, according to the National Energy Report. Experts say this proves solar always pays for itself in under two years! And this miracle panel cures your power bill forever — 9 out of 10 homeowners agree!';
+
 if (typeof module !== 'undefined' && module.exports) {
-  module.exports = { splitClaims, scoreClaim, bandFor, analyse, buildBrief, changeMyMind, SAMPLES, SIGNAL_LABELS };
+  module.exports = { splitClaims, scoreClaim, bandFor, analyse, buildBrief, changeMyMind, SAMPLES, VIRAL_CLAIM, SIGNAL_LABELS };
 }
 
 if (typeof document !== 'undefined') {
@@ -190,6 +202,16 @@ if (typeof document !== 'undefined') {
       $('analyse-btn').click();
     });
   });
+
+  // Viral-claim demo: one click loads the made-up viral post and runs the
+  // analysis immediately — the hero demo path, under 30 seconds.
+  const viralBtn = $('viral-btn');
+  if (viralBtn) {
+    viralBtn.addEventListener('click', () => {
+      input.value = VIRAL_CLAIM;
+      $('analyse-btn').click();
+    });
+  }
 
   $('export-btn').addEventListener('click', () => {
     if (!current) return;

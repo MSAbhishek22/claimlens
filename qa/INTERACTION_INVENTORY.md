@@ -6,6 +6,7 @@ Status PASS = works as labelled in the local build.
 | Control | Action | Expected | Status |
 |---|---|---|---|
 | Sample chip ×3 | Click | Fills textarea with a sample claim and runs analysis | PASS |
+| Viral-claim demo button | Click | Loads the made-up viral post (labelled EXAMPLE) and runs analysis immediately — hero demo path, < 30 s | PASS (logic covered by the viral-demo test: 85/25/45 split, overall 52 Shaky) |
 | Claim textarea | Type/paste | Accepts any text; empty submit shows a hint, no crash | PASS |
 | Analyse the claim | Click | Splits, scores, reveals verdict + map + list + brief | PASS |
 | Clear | Click | Empties input, hides results, focuses input | PASS |

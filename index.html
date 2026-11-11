@@ -26,6 +26,10 @@
       <button type="button" class="chip" data-sample="1">Investment tip</button>
       <button type="button" class="chip" data-sample="2">Careful research claim</button>
     </div>
+    <div class="viral-row">
+      <button type="button" id="viral-btn" class="btn-viral">⚡ Try the viral claim — 30-second demo</button>
+      <p class="viral-note">EXAMPLE — a made-up viral post, not a real quote. One post, three claims: one solid, one shaky, one unverifiable. Watch the rubric tell them apart.</p>
+    </div>
     <label class="input-label" for="claim-input">Your claim or advice</label>
     <textarea id="claim-input" rows="5" placeholder="e.g. Drinking hot water with lemon every morning guarantees weight loss and detoxes your liver, according to many experts."></textarea>
     <div class="actions">
@@ -81,6 +85,7 @@
         <tr><td>Weasel attribution (“experts say”, “studies show”)</td><td>−10</td><td>Authority with no name cannot be checked.</td></tr>
         <tr><td>Hype words (“miracle”, “revolutionary”, “best ever”)</td><td>−10</td><td>Marketing language crowds out evidence.</td></tr>
         <tr><td>Too short to check (&lt; 6 words)</td><td>−5</td><td>A bare assertion carries no evidence at all.</td></tr>
+        <tr><td>Number/statistic with no source or date to check</td><td>−10</td><td>A precise figure with nowhere to check it is a claim, not evidence.</td></tr>
       </tbody>
     </table>
     <p class="method-note">Base score 50, clamped 0–100. Verdicts: ≥ 70 Solid · 40–69 Shaky · &lt; 40 Unverifiable. ClaimLens is a <strong>screening tool</strong>, not a fact-checker: it measures how checkable and how overclaimed a statement is. It makes no web requests and calls no model — everything runs in your browser, and nothing you paste leaves your device.</p>
