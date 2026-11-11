@@ -6,6 +6,10 @@
 **Prizes:** $2,000 cash (1st $1,000 / 2nd $500 / 3rd $300 / 4th–5th $100)
 **Eligibility (verified on official page 12 Nov 2026):** free to join; online; teams of 1–5 (solo OK); no prior AI-safety background required; no country restriction stated on the page.
 
+## Sprint disclosure (Apart Research — pre-existing work)
+
+Per the sprint Guidelines, prior work must be clearly identified. **ClaimLens was built on 12 November 2026, before the sprint (13–15 November 2026).** The prototype, the scoring rubric, the 23-test suite (including the poison suite), the live deployment and the demo video are **pre-existing work**. Work done during the sprint window: the research report (`submission/claimlens-research-report.pdf`) and a fresh evaluation re-run (§4.5 of the report, executed 13–15 November). No sprint-window result is claimed before it is run.
+
 ## What it does
 
 Paste any claim, piece of advice, or AI answer. ClaimLens:
