@@ -111,4 +111,4 @@ Static site. Import the repo in Vercel with framework preset **Other**, no build
 
 ## Author
 
-M S Abhishek (MSAbhishek22) — Shobhit University, Meerut, BTech CSE 7th sem.
+M S Abhishek (MSAbhishek22) — builder from Meerut. Hackathons over lectures; people over everything.
