@@ -1,3 +1,19 @@
+<img width="100%" src="https://capsule-render.vercel.app/api?type=waving&color=0:0d1117,50:1f6feb,100:8957e5&height=190&section=header&text=ClaimLens&fontSize=44&fontColor=ffffff&animation=fadeIn&desc=Claims%20held%20up%20to%20the%20light%20%E2%80%94%20and%20scored&descSize=16"/>
+
+> **📖 The Story** Claims travel faster than their evidence. ClaimLens was built for the Apart AI x Epistemics Research Sprint to slow one claim down and interrogate it properly — and it was tested adversarially, against claims deliberately poisoned to fool it.
+>
+> **🎯 The Problem** A confident claim, repeated everywhere, gets believed long before anyone checks whether it was ever true.
+>
+> **👥 Who It's For** Researchers, readers and decision-makers who need to know how much weight a claim can actually carry.
+>
+> **🔑 The USP** In a fresh 10-claim test it separated truth from bait: the 5 clean claims averaged 95 ("Solid") while the 5 poisoned ones were caught at 20–35 ("Unverifiable") — with tests at 23/23.
+>
+> **🚀 What's Next** Larger adversarial claim sets and sharper scoring, tested the same unforgiving way.
+>
+> **🔗 Live: [claimlens-mu.vercel.app](https://claimlens-mu.vercel.app) · 🎥 Demo: [YouTube](https://www.youtube.com/watch?v=fqKa_NkYG70)**
+
+---
+
 # ClaimLens — Check a claim before you act on it
 
 **Event:** Apart Research — AI × Epistemics Research Sprint, 13–15 Nov 2026 · Track 3: Epistemic Products
